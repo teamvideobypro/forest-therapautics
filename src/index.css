@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Wellges Organic Palette */
+    --color-canvas: #F7F5F0;
+    --color-surface-white: #FFFFFF;
+    --color-surface-sage: #D6E3CE;
+    --color-surface-sage-light: #E8EFE3;
+    --color-dark-container: #131914;
+    --color-dark-card: #18201A;
+    --color-text-main: #1D231E;
+    --color-text-muted: #656C64;
+    --color-border-subtle: #E8E5DD;
+    --color-border-dark: rgba(255, 255, 255, 0.08);
+    --color-gold: #C99738;
+    --color-gold-hover: #B38226;
+
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cinzel', serif;
+  }
+
+  html {
+    background-color: var(--color-canvas);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-text-main);
+    min-height: 100svh;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* Safe Area Insets for Mobile */
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Typography utilities */
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-accent {
+    font-family: 'Newsreader', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #4A6351;
+  }
+
+  .font-accent-light {
+    font-family: 'Newsreader', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #D6E3CE;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  p, li {
+    text-wrap: pretty;
+  }
+
+  /* Form controls font size guard against mobile iOS zoom */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Interactive elements */
+  button, a, [role="button"] {
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Touch & press feedback */
+button:active:not(:disabled), .press-feedback:active {
+  transform: scale(0.98);
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: #AAB7A2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7E8E75;
+}
+
+/* Hover effects only for fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -6px rgba(19, 25, 20, 0.07);
+  }
+
+  .hover-dark-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Wix Strip Tag label */
+.wix-strip-badge {
+  font-family: var(--font-sans);
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px dashed #C99738;
+  background: rgba(201, 151, 56, 0.15);
+  color: #131914;
+}
+
+/* Infinite Scrolling Ticker Animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
