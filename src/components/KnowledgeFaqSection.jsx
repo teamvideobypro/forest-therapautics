@@ -33,7 +33,7 @@ export default function KnowledgeFaqSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column (4 cols, from Reference) */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-6 reveal-on-scroll">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
               <span>AI Discoverability</span>
@@ -50,7 +50,7 @@ export default function KnowledgeFaqSection({
 
             <button
               onClick={onOpenAiGuide}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#131914] hover:bg-[#253026] text-white text-xs font-medium uppercase tracking-wider transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#131914] hover:bg-[#253026] text-white text-xs font-medium uppercase tracking-wider transition-all shadow-xs hover-lift"
             >
               <Bot className="w-4 h-4 text-[#D6E3CE]" />
               <span>Ask Sanctuary Guide AI</span>
@@ -58,7 +58,7 @@ export default function KnowledgeFaqSection({
           </div>
 
           {/* Right Column: Clean Divider Accordion (8 cols) */}
-          <div className="lg:col-span-8 divide-y divide-[#E8E5DD] border-y border-[#E8E5DD]">
+          <div className="lg:col-span-8 divide-y divide-[#E8E5DD] border-y border-[#E8E5DD] reveal-on-scroll">
             {FAQ_DATA.map((item, idx) => {
               const isOpen = openIdx === idx;
               return (

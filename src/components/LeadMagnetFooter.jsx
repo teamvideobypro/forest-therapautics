@@ -38,7 +38,7 @@ export default function LeadMagnetFooter({
       )}
 
       {/* 1. AMBIENT DARK CARD (Matches Reference Section 12: "Your moment of calm") */}
-      <div className="max-w-7xl mx-auto mb-6">
+      <div className="max-w-7xl mx-auto mb-6 reveal-on-scroll">
         <div className="rounded-3xl bg-[#131914] text-white p-12 sm:p-20 text-center relative overflow-hidden shadow-xl border border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(214,227,206,0.12)_0%,transparent_70%)] pointer-events-none" />
 
@@ -68,7 +68,7 @@ export default function LeadMagnetFooter({
       </div>
 
       {/* 2. MAIN FOOTER CONTAINER WITH GIANT WORDMARK */}
-      <div className="max-w-7xl mx-auto rounded-3xl bg-[#131914] text-white p-8 sm:p-14 lg:p-16 border border-white/10 shadow-2xl space-y-16">
+      <div className="max-w-7xl mx-auto rounded-3xl bg-[#131914] text-white p-8 sm:p-14 lg:p-16 border border-white/10 shadow-2xl space-y-16 reveal-on-scroll">
         {/* Top Split: Newsletter "A gentle note in your inbox" */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-12 border-b border-white/10">
           <div className="space-y-2 max-w-md">

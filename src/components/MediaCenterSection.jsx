@@ -28,7 +28,7 @@ export default function MediaCenterSection({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         {/* Header (Matches Reference Section 10: "Notes for everyday living") */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 reveal-on-scroll">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
@@ -49,7 +49,7 @@ export default function MediaCenterSection({
           {/* Card 1: Broadcast Video Card */}
           <div
             onClick={() => onPlayEpisode(broadcastCard.videoPreview)}
-            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group"
+            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group reveal-on-scroll stagger-1"
           >
             <div>
               <div className="relative rounded-2xl overflow-hidden h-52 mb-4 bg-[#131914]">
@@ -85,7 +85,7 @@ export default function MediaCenterSection({
           {/* Card 2: Article 1 (The Golden Thread Principle) */}
           <div
             onClick={() => onOpenArticle(recentHubArticles[0])}
-            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group"
+            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group reveal-on-scroll stagger-2"
           >
             <div>
               <div className="relative rounded-2xl overflow-hidden h-52 mb-4 bg-[#F7F5F0]">
@@ -121,7 +121,7 @@ export default function MediaCenterSection({
           {/* Card 3: Article 2 (The Second Ascension) */}
           <div
             onClick={() => onOpenArticle(recentHubArticles[1])}
-            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group"
+            className="rounded-3xl bg-white border border-[#E8E5DD] overflow-hidden p-4 flex flex-col justify-between hover-lift shadow-xs cursor-pointer group reveal-on-scroll stagger-3"
           >
             <div>
               <div className="relative rounded-2xl overflow-hidden h-52 mb-4 bg-[#F7F5F0]">

@@ -23,7 +23,7 @@ export default function ThreeHousesSection({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 reveal-on-scroll">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
             <span>The Living Ecosystem</span>
@@ -40,10 +40,11 @@ export default function ThreeHousesSection({
 
         {/* 3 Multi-Tone Cards (White, Deep Dark, Pale Sage from Reference) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          {THREE_HOUSES.map((house) => {
+          {THREE_HOUSES.map((house, idx) => {
             const isWix = house.id === 'wix';
             const isClassroom = house.id === 'skillspring';
             const isCommunity = house.id === 'withme';
+            const staggerClass = idx === 0 ? 'stagger-1' : idx === 1 ? 'stagger-2' : 'stagger-3';
 
             // Distinct styling per card based on reference
             const cardStyle = isWix
@@ -63,7 +64,7 @@ export default function ThreeHousesSection({
             return (
               <div 
                 key={house.id}
-                className={`rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 ${cardStyle}`}
+                className={`rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 reveal-on-scroll ${staggerClass} ${cardStyle}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">

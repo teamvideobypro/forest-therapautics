@@ -31,7 +31,7 @@ export default function SchoolsSection({
         
         {/* PART 1: 4-CARD HORIZONTAL STRAND STRIP ("Small rituals. Meaningful results.") */}
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8 reveal-on-scroll">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
@@ -52,7 +52,7 @@ export default function SchoolsSection({
             {/* Card 1: Dark Image Card */}
             <div 
               onClick={() => onOpenCourseModal(signatureCourses[0])}
-              className="group relative rounded-3xl overflow-hidden h-[380px] p-6 flex flex-col justify-end text-white cursor-pointer hover-lift shadow-sm bg-[#131914]"
+              className="group relative rounded-3xl overflow-hidden h-[380px] p-6 flex flex-col justify-end text-white cursor-pointer hover-lift shadow-sm bg-[#131914] reveal-on-scroll stagger-1"
             >
               <img
                 src={signatureCourses[0].image}
@@ -76,7 +76,7 @@ export default function SchoolsSection({
             {/* Card 2: Deep Dark Green Card */}
             <div 
               onClick={() => onOpenCourseModal(signatureCourses[1])}
-              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-white cursor-pointer hover-dark-lift shadow-sm bg-[#18201A] border border-white/10"
+              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-white cursor-pointer hover-dark-lift shadow-sm bg-[#18201A] border border-white/10 reveal-on-scroll stagger-2"
             >
               <div className="space-y-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded-full bg-white/10 text-[#D6E3CE] font-semibold">
@@ -99,7 +99,7 @@ export default function SchoolsSection({
             {/* Card 3: Clean White Card */}
             <div 
               onClick={() => onOpenCourseModal(signatureCourses[2])}
-              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-[#131914] cursor-pointer hover-lift shadow-xs bg-white border border-[#E8E5DD]"
+              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-[#131914] cursor-pointer hover-lift shadow-xs bg-white border border-[#E8E5DD] reveal-on-scroll stagger-3"
             >
               <div className="space-y-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded-full bg-[#F7F5F0] text-[#131914] font-semibold border border-[#E8E5DD]">
@@ -122,7 +122,7 @@ export default function SchoolsSection({
             {/* Card 4: Pale Sage Green Tinted Card */}
             <div 
               onClick={() => onOpenYellowEnvelope()}
-              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-[#131914] cursor-pointer hover-lift shadow-xs bg-[#D6E3CE] border border-[#C6D6BD]"
+              className="rounded-3xl p-6 h-[380px] flex flex-col justify-between text-[#131914] cursor-pointer hover-lift shadow-xs bg-[#D6E3CE] border border-[#C6D6BD] reveal-on-scroll stagger-4"
             >
               <div className="space-y-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded-full bg-white/70 text-[#131914] font-semibold">
@@ -146,7 +146,7 @@ export default function SchoolsSection({
 
         {/* PART 2: 3-COLUMN PRICING TIERS ("Make space for your wellbeing") */}
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 reveal-on-scroll">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
               <span>Transparent University Membership</span>
@@ -161,7 +161,7 @@ export default function SchoolsSection({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {/* Tier 1: First Light (White Card) */}
-            <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 flex flex-col justify-between hover-lift shadow-xs">
+            <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 flex flex-col justify-between hover-lift shadow-xs reveal-on-scroll stagger-1">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-semibold text-sm text-[#131914]">First Light</span>
@@ -196,7 +196,7 @@ export default function SchoolsSection({
             </div>
 
             {/* Tier 2: Second Ascension (Featured Dark Card from Reference) */}
-            <div className="rounded-3xl bg-[#131914] text-white border border-white/10 p-8 flex flex-col justify-between hover-dark-lift shadow-xl relative">
+            <div className="rounded-3xl bg-[#131914] text-white border border-white/10 p-8 flex flex-col justify-between hover-dark-lift shadow-xl relative reveal-on-scroll stagger-2">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-semibold text-sm text-white">Second Ascension</span>
@@ -231,7 +231,7 @@ export default function SchoolsSection({
             </div>
 
             {/* Tier 3: All Access Stewardship (White Card) */}
-            <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 flex flex-col justify-between hover-lift shadow-xs">
+            <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 flex flex-col justify-between hover-lift shadow-xs reveal-on-scroll stagger-3">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-semibold text-sm text-[#131914]">All Access Stewardship</span>
@@ -269,7 +269,7 @@ export default function SchoolsSection({
 
         {/* PART 3: 4-STEP PROCESS CARDS (Yellow Envelope Seminary 4-Year Arc) */}
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8 reveal-on-scroll">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
@@ -290,31 +290,34 @@ export default function SchoolsSection({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {yellowEnvelope.fourYearArc.map((arc, aIdx) => (
-              <div 
-                key={aIdx}
-                className="p-6 rounded-3xl bg-white border border-[#E8E5DD] shadow-xs flex flex-col justify-between hover-lift h-[220px]"
-              >
-                <div>
-                  <div className="w-7 h-7 rounded-full bg-[#F7F5F0] border border-[#E8E5DD] flex items-center justify-center font-mono text-xs font-bold text-[#131914] mb-3">
-                    0{aIdx + 1}
+            {yellowEnvelope.fourYearArc.map((arc, aIdx) => {
+              const staggerArc = (aIdx % 4) + 1;
+              return (
+                <div 
+                  key={aIdx}
+                  className={`p-6 rounded-3xl bg-white border border-[#E8E5DD] shadow-xs flex flex-col justify-between hover-lift h-[220px] reveal-on-scroll stagger-${staggerArc}`}
+                >
+                  <div>
+                    <div className="w-7 h-7 rounded-full bg-[#F7F5F0] border border-[#E8E5DD] flex items-center justify-center font-mono text-xs font-bold text-[#131914] mb-3">
+                      0{aIdx + 1}
+                    </div>
+                    <div className="font-sans font-semibold text-lg text-[#131914] mb-1">
+                      {arc.title}
+                    </div>
+                    <div className="text-[11px] font-mono text-[#656C64] uppercase tracking-wider mb-2">
+                      {arc.element}
+                    </div>
+                    <p className="text-xs text-[#656C64] leading-relaxed">
+                      {arc.focus}
+                    </p>
                   </div>
-                  <div className="font-sans font-semibold text-lg text-[#131914] mb-1">
-                    {arc.title}
-                  </div>
-                  <div className="text-[11px] font-mono text-[#656C64] uppercase tracking-wider mb-2">
-                    {arc.element}
-                  </div>
-                  <p className="text-xs text-[#656C64] leading-relaxed">
-                    {arc.focus}
-                  </p>
-                </div>
 
-                <div className="text-[10px] font-mono text-[#131914]/70 pt-2 border-t border-[#E8E5DD]">
-                  {arc.year} • 12 Monthly Parcels
+                  <div className="text-[10px] font-mono text-[#131914]/70 pt-2 border-t border-[#E8E5DD]">
+                    {arc.year} • 12 Monthly Parcels
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

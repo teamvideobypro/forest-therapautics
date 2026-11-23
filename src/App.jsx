@@ -22,11 +22,15 @@ import ArticleReaderModal from './components/modals/ArticleReaderModal';
 import SearchModal from './components/modals/SearchModal';
 import HouseDetailModal from './components/modals/HouseDetailModal';
 import MembershipModal from './components/modals/MembershipModal';
+import { useScrollReveal } from './hooks/useScrollReveal';
 import { Play, X, Sparkles, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('homepage'); // 'homepage' or 'blueprint'
   const stripInspectorActive = false;
+
+  // Single-trigger scroll reveal hook
+  useScrollReveal(currentView);
   
   // Cart state
   const [cartItems, setCartItems] = useState([

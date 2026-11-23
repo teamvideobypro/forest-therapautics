@@ -41,7 +41,7 @@ export default function FounderSection({
         {/* 2-Column Split Feature (Matches Reference Section 5) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Left Column: Rounded Image Card with Floating Pill Badge */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative reveal-on-scroll">
             <div className="relative rounded-3xl overflow-hidden shadow-lg h-[460px] sm:h-[500px] bg-[#131914]">
               <img
                 src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80"
@@ -65,7 +65,7 @@ export default function FounderSection({
           </div>
 
           {/* Right Column: Founder Narrative & Numbered Pillars */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-8 reveal-on-scroll">
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
@@ -83,30 +83,33 @@ export default function FounderSection({
 
             {/* Numbered Steps / Pillars from Reference */}
             <div className="space-y-4 pt-2">
-              {pillars.map((p, idx) => (
-                <div 
-                  key={idx}
-                  className="p-5 rounded-2xl bg-white border border-[#E8E5DD] flex items-start gap-4 shadow-xs"
-                >
-                  <div className="w-8 h-8 rounded-full bg-[#131914] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
-                    {p.num}
-                  </div>
-                  <div className="space-y-1">
-                    <div className="font-sans font-semibold text-base text-[#131914]">
-                      {p.title}
+              {pillars.map((p, idx) => {
+                const staggerClass = `stagger-${idx + 1}`;
+                return (
+                  <div 
+                    key={idx}
+                    className={`p-5 rounded-2xl bg-white border border-[#E8E5DD] flex items-start gap-4 shadow-xs hover-lift reveal-on-scroll ${staggerClass}`}
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#131914] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+                      {p.num}
                     </div>
-                    <p className="text-xs sm:text-sm text-[#656C64] leading-relaxed">
-                      {p.desc}
-                    </p>
+                    <div className="space-y-1">
+                      <div className="font-sans font-semibold text-base text-[#131914]">
+                        {p.title}
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#656C64] leading-relaxed">
+                        {p.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
 
         {/* The Living Root Scholarship Banner (Clean Rounded Inset Card) */}
-        <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 sm:p-10 shadow-xs">
+        <div className="rounded-3xl bg-white border border-[#E8E5DD] p-8 sm:p-10 shadow-xs reveal-on-scroll">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="space-y-3 max-w-2xl">
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#131914] font-bold">

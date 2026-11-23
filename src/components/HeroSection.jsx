@@ -42,7 +42,7 @@ export default function HeroSection({
         )}
 
         {/* Floating Top Right Badge */}
-        <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-xs text-white/90">
+        <div className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-xs text-white/90 hero-fade-sub">
           <span className="w-2 h-2 rounded-full bg-[#D6E3CE] animate-pulse" />
           <span className="font-mono text-[11px] font-medium tracking-wide">
             Founding Year: Oct 31, 2026
@@ -54,7 +54,7 @@ export default function HeroSection({
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full my-auto py-8 sm:py-12">
         <div className="max-w-3xl space-y-5 sm:space-y-6">
           {/* Pill Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white/90 text-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white/90 text-xs hero-fade-badge">
             <Sparkles className="w-3.5 h-3.5 text-[#D6E3CE]" />
             <span className="tracking-wide text-[11px] font-medium">
               Eco-Christed Living • Spiritual Seminary & University
@@ -62,17 +62,17 @@ export default function HeroSection({
           </div>
 
           {/* Headline - strictly preserving clean sans-serif style from reference */}
-          <h1 className="font-sans text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white leading-[1.08]">
+          <h1 className="font-sans text-4xl sm:text-6xl md:text-7xl font-medium tracking-tight text-white leading-[1.08] hero-fade-title">
             The Earth has never stopped calling you back to yourself.
           </h1>
 
           {/* Subtitle */}
-          <p className="font-sans text-base sm:text-lg md:text-xl text-white/85 font-normal leading-relaxed max-w-2xl">
+          <p className="font-sans text-base sm:text-lg md:text-xl text-white/85 font-normal leading-relaxed max-w-2xl hero-fade-desc">
             Where nature, presence, and the awakened heart restore what modern living has quieted. You are not broken. You are remembering—and this is where that remembering has a home.
           </p>
 
           {/* Pill Action Buttons */}
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          <div className="pt-2 flex flex-wrap items-center gap-3 hero-fade-cta">
             <button
               onClick={onExploreSchools}
               className="px-7 py-3.5 rounded-full bg-white hover:bg-white/90 text-[#131914] font-medium text-xs sm:text-sm tracking-wide transition-all shadow-sm hover-lift flex items-center gap-2"

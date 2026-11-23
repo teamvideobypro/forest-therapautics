@@ -34,7 +34,7 @@ export default function PhilosophySection({ stripInspectorActive }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Eyebrow & Pill */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-4 reveal-on-scroll">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8E5DD] text-xs text-[#131914] font-medium shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#131914]" />
               <span>How This Space Is Held</span>
@@ -48,7 +48,7 @@ export default function PhilosophySection({ stripInspectorActive }) {
             <div className="pt-2">
               <button
                 onClick={() => setBreathActive(!breathActive)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-[#F2EFE8] border border-[#E8E5DD] text-xs text-[#131914] font-medium transition-all shadow-xs"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white hover:bg-[#F2EFE8] border border-[#E8E5DD] text-xs text-[#131914] font-medium transition-all shadow-xs hover-lift"
               >
                 <Wind className="w-3.5 h-3.5 text-[#131914]" />
                 <span>{breathActive ? `Forest Breath: ${breathPhase}` : 'Breathe with the Forest'}</span>
@@ -62,7 +62,7 @@ export default function PhilosophySection({ stripInspectorActive }) {
           </div>
 
           {/* Right Main Statement & Two Ascensions Card */}
-          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8 reveal-on-scroll">
             <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#131914] leading-[1.2]">
               You are not here to be fixed. You are here to be witnessed, supported, and reminded of <span className="font-accent">your own coherence.</span>
             </h2>
@@ -72,7 +72,7 @@ export default function PhilosophySection({ stripInspectorActive }) {
             </p>
 
             {/* The Two Ascensions Card (Clean White Rounded Box from Reference) */}
-            <div className="p-8 rounded-3xl bg-white border border-[#E8E5DD] shadow-xs space-y-6">
+            <div className="p-8 rounded-3xl bg-white border border-[#E8E5DD] shadow-xs space-y-6 hover-lift">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#131914]" />
                 <h3 className="font-sans text-lg sm:text-xl font-semibold text-[#131914] tracking-tight">

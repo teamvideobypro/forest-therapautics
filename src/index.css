@@ -98,8 +98,80 @@
 
 /* Touch & press feedback */
 button:active:not(:disabled), .press-feedback:active {
-  transform: scale(0.98);
-  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(0.97);
+  transition: transform 100ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Base button and interactive link transitions */
+button, a[role="button"], .btn-transition {
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+              background-color 220ms ease,
+              border-color 220ms ease,
+              color 220ms ease,
+              box-shadow 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Hero Section Mount Animations (Smooth, light entrance) */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-badge {
+  animation: heroFadeUp 650ms cubic-bezier(0.23, 1, 0.32, 1) 100ms both;
+}
+
+.hero-fade-title {
+  animation: heroFadeUp 700ms cubic-bezier(0.23, 1, 0.32, 1) 220ms both;
+}
+
+.hero-fade-desc {
+  animation: heroFadeUp 700ms cubic-bezier(0.23, 1, 0.32, 1) 340ms both;
+}
+
+.hero-fade-cta {
+  animation: heroFadeUp 700ms cubic-bezier(0.23, 1, 0.32, 1) 460ms both;
+}
+
+.hero-fade-sub {
+  animation: heroFadeUp 600ms cubic-bezier(0.23, 1, 0.32, 1) 150ms both;
+}
+
+/* Single-Trigger Scroll Reveal System (Fade-Up & Subtle Stagger) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 650ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 650ms cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays for Grid/List Cards */
+.stagger-1 {
+  transition-delay: 50ms;
+}
+
+.stagger-2 {
+  transition-delay: 110ms;
+}
+
+.stagger-3 {
+  transition-delay: 170ms;
+}
+
+.stagger-4 {
+  transition-delay: 230ms;
 }
 
 /* Custom Scrollbars */
@@ -121,16 +193,23 @@ button:active:not(:disabled), .press-feedback:active {
 /* Hover effects only for fine pointers */
 @media (hover: hover) and (pointer: fine) {
   .hover-lift {
-    transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms;
+    transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 250ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   .hover-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px -6px rgba(19, 25, 20, 0.07);
+    transform: translateY(-2.5px) scale(1.01);
+    box-shadow: 0 12px 28px -6px rgba(19, 25, 20, 0.08);
   }
 
+  .hover-dark-lift {
+    transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 250ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
   .hover-dark-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2.5px) scale(1.01);
+    box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.45);
+  }
+
+  .btn-hover-scale:hover {
+    transform: translateY(-1.5px) scale(1.02);
   }
 }
 
@@ -162,4 +241,22 @@ button:active:not(:disabled), .press-feedback:active {
 
 .animate-ticker:hover {
   animation-play-state: paused;
+}
+
+/* Accessibility: Full Prefers Reduced Motion Guard */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-ticker {
+    animation: none !important;
+  }
 }
