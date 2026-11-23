@@ -188,7 +188,7 @@ export default function SchoolsSection({
               </div>
 
               <button
-                onClick={() => onOpenCurriculum('school-of-light')}
+                onClick={() => onOpenCurriculum('first-light')}
                 className="w-full py-3 rounded-full border border-[#E8E5DD] hover:border-[#131914] text-[#131914] font-medium text-xs tracking-wide transition-colors"
               >
                 Begin with First Light
@@ -223,7 +223,7 @@ export default function SchoolsSection({
               </div>
 
               <button
-                onClick={() => onOpenCurriculum('school-of-light')}
+                onClick={() => onOpenCurriculum('second-ascension')}
                 className="w-full py-3.5 rounded-full bg-white hover:bg-white/90 text-[#131914] font-medium text-xs tracking-wide transition-colors shadow-sm"
               >
                 Enter Second Ascension
@@ -258,7 +258,7 @@ export default function SchoolsSection({
               </div>
 
               <button
-                onClick={() => onOpenCurriculum('school-of-light')}
+                onClick={() => onOpenCurriculum('all-access')}
                 className="w-full py-3 rounded-full border border-[#E8E5DD] hover:border-[#131914] text-[#131914] font-medium text-xs tracking-wide transition-colors"
               >
                 Step into All Access

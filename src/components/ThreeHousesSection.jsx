@@ -102,16 +102,16 @@ export default function ThreeHousesSection({
                 <div className={`pt-4 border-t ${borderLine}`}>
                   {isWix && (
                     <button
-                      onClick={onExploreWix}
+                      onClick={() => onExploreWix && onExploreWix('wix')}
                       className="w-full py-3 rounded-full bg-[#131914] text-white hover:bg-[#222B23] text-xs font-medium uppercase tracking-wider transition-colors shadow-xs"
                     >
-                      Explore Public Offerings
+                      Explore Public Sanctuary
                     </button>
                   )}
 
                   {isClassroom && (
                     <button
-                      onClick={onOpenClassroomModal}
+                      onClick={() => onOpenClassroomModal && onOpenClassroomModal('skillspring')}
                       className="w-full py-3 rounded-full bg-white text-[#131914] hover:bg-white/90 text-xs font-medium uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
                     >
                       <span>Enter Classroom Portal</span>
@@ -121,7 +121,7 @@ export default function ThreeHousesSection({
 
                   {isCommunity && (
                     <button
-                      onClick={onOpenCommunityModal}
+                      onClick={() => onOpenCommunityModal && onOpenCommunityModal('withme')}
                       className="w-full py-3 rounded-full bg-[#131914] text-white hover:bg-[#222B23] text-xs font-medium uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
                     >
                       <span>Enter Member Community</span>

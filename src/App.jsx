@@ -20,7 +20,9 @@ import CurriculumModal from './components/modals/CurriculumModal';
 import ScholarshipModal from './components/modals/ScholarshipModal';
 import ArticleReaderModal from './components/modals/ArticleReaderModal';
 import SearchModal from './components/modals/SearchModal';
-import { Play, X, Sparkles } from 'lucide-react';
+import HouseDetailModal from './components/modals/HouseDetailModal';
+import MembershipModal from './components/modals/MembershipModal';
+import { Play, X, Sparkles, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function App() {
   const [currentView, setCurrentView] = useState('homepage'); // 'homepage' or 'blueprint'
@@ -43,7 +45,9 @@ export default function App() {
   const [isSoulCallOpen, setIsSoulCallOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isAiGuideOpen, setIsAiGuideOpen] = useState(false);
-  const [curriculumModal, setCurriculumModal] = useState({ isOpen: false, mode: 'school-of-light' });
+  const [curriculumModal, setCurriculumModal] = useState({ isOpen: false, mode: 'yellow-envelope' });
+  const [houseModal, setHouseModal] = useState({ isOpen: false, houseId: 'skillspring' });
+  const [membershipModal, setMembershipModal] = useState({ isOpen: false, tier: 'second-ascension' });
   const [isScholarshipOpen, setIsScholarshipOpen] = useState(false);
   const [activeArticle, setActiveArticle] = useState(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -120,15 +124,15 @@ export default function App() {
 
           {/* Section 3: The Three Houses Ecosystem */}
           <ThreeHousesSection
-            onExploreWix={() => navigateToSection('offerings')}
-            onOpenClassroomModal={() => setCurriculumModal({ isOpen: true, mode: 'school-of-light' })}
-            onOpenCommunityModal={() => navigateToSection('media')}
+            onExploreWix={(id) => setHouseModal({ isOpen: true, houseId: id || 'wix' })}
+            onOpenClassroomModal={(id) => setHouseModal({ isOpen: true, houseId: id || 'skillspring' })}
+            onOpenCommunityModal={(id) => setHouseModal({ isOpen: true, houseId: id || 'withme' })}
             stripInspectorActive={stripInspectorActive}
           />
 
           {/* Section 4: Our Schools & Educational Divisions */}
           <SchoolsSection
-            onOpenCurriculum={() => setCurriculumModal({ isOpen: true, mode: 'school-of-light' })}
+            onOpenCurriculum={(tier) => setMembershipModal({ isOpen: true, tier: tier || 'second-ascension' })}
             onOpenYellowEnvelope={() => setCurriculumModal({ isOpen: true, mode: 'yellow-envelope' })}
             onOpenCourseModal={(course) => setActiveCourseModal(course)}
             stripInspectorActive={stripInspectorActive}
@@ -230,10 +234,25 @@ export default function App() {
         onClose={() => setIsAiGuideOpen(false)}
       />
 
+      <HouseDetailModal
+        isOpen={houseModal.isOpen}
+        initialHouseId={houseModal.houseId}
+        onClose={() => setHouseModal(prev => ({ ...prev, isOpen: false }))}
+      />
+
+      <MembershipModal
+        isOpen={membershipModal.isOpen}
+        initialTier={membershipModal.tier}
+        onClose={() => setMembershipModal(prev => ({ ...prev, isOpen: false }))}
+        onOpenSoulCall={() => setIsSoulCallOpen(true)}
+        onOpenScholarship={() => setIsScholarshipOpen(true)}
+      />
+
       <CurriculumModal
         isOpen={curriculumModal.isOpen}
         mode={curriculumModal.mode}
-        onClose={() => setCurriculumModal({ isOpen: false, mode: 'school-of-light' })}
+        onClose={() => setCurriculumModal({ isOpen: false, mode: 'yellow-envelope' })}
+        onOpenSoulCall={() => setIsSoulCallOpen(true)}
       />
 
       <ScholarshipModal
@@ -255,37 +274,39 @@ export default function App() {
 
       {/* Video Transmission Modal (Episode 42) */}
       {activeVideoModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs animate-fadeIn">
-          <div className="relative w-full max-w-3xl rounded-2xl bg-[#1F362C] border border-[#C99738]/40 p-4 sm:p-6 text-[#F6F1E7] shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-xs animate-fadeIn">
+          <div className="relative w-full max-w-3xl rounded-3xl bg-[#131914] border border-white/10 p-6 sm:p-8 text-white shadow-2xl">
             <button
               onClick={() => setActiveVideoModal(null)}
-              className="absolute top-4 right-4 p-2 text-[#F6F1E7] hover:bg-white/10 rounded-full"
+              className="absolute top-4 right-4 p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-full transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="font-serif text-xl font-bold mb-1 pr-10">
-              {activeVideoModal.title}
-            </div>
-            <div className="text-xs text-[#C99738] font-mono mb-4">
-              Broadcasting on Roku TV & Amazon Fire TV • Channel 436
+            <div className="space-y-1 mb-4 pr-10">
+              <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-[#D6E3CE] font-bold uppercase tracking-wider">
+                Broadcast TV • Channel 436
+              </span>
+              <h3 className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-white pt-1">
+                {activeVideoModal.title}
+              </h3>
             </div>
 
-            <div className="relative rounded-xl overflow-hidden aspect-video bg-black flex items-center justify-center shadow-lg border border-white/10">
+            <div className="relative rounded-2xl overflow-hidden aspect-video bg-black flex items-center justify-center shadow-lg border border-white/10">
               <img
                 src={activeVideoModal.thumbnail}
                 alt={activeVideoModal.title}
                 className="w-full h-full object-cover opacity-60"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 space-y-3">
-                <div className="w-16 h-16 rounded-full bg-[#C99738] text-[#1F362C] flex items-center justify-center shadow-xl">
+                <div className="w-16 h-16 rounded-full bg-white text-[#131914] flex items-center justify-center shadow-xl">
                   <Play className="w-7 h-7 fill-current translate-x-0.5" />
                 </div>
-                <div className="text-sm font-semibold max-w-md">
+                <div className="text-sm font-semibold max-w-md text-white">
                   Simulated Video Transmission Stream • Host: Telu'an Veyar
                 </div>
-                <p className="text-xs text-[#F6F1E7]/70 max-w-sm">
-                  Full 48-minute broadcast available on Roku Channel 436 and YouTube. Savor this peaceful contemplative teaching.
+                <p className="text-xs text-white/70 max-w-sm">
+                  Full 48-minute broadcast available on Roku Channel 436, Fire TV, and YouTube.
                 </p>
               </div>
             </div>
@@ -295,43 +316,89 @@ export default function App() {
 
       {/* Course Strand Details Modal */}
       {activeCourseModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
-          <div className="relative w-full max-w-lg rounded-2xl bg-[#F6F1E7] border border-[#3B2E26]/20 p-6 sm:p-8 apothecary-card shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-xs animate-fadeIn">
+          <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E8E5DD] shadow-2xl max-h-[92vh] overflow-y-auto flex flex-col">
             <button
               onClick={() => setActiveCourseModal(null)}
-              className="absolute top-4 right-4 p-2 text-[#3B2E26] hover:bg-[#EFE6D2] rounded-full"
+              className="absolute top-4 right-4 z-20 p-2.5 text-[#131914] bg-white/80 hover:bg-white rounded-full shadow-md backdrop-blur-xs transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <span className="text-[10px] font-mono uppercase text-[#9A7225] font-bold">
-              {activeCourseModal.eyebrow}
-            </span>
-            <h3 className="font-serif text-2xl font-bold text-[#1F362C] mt-1 mb-2">
-              {activeCourseModal.title}
-            </h3>
+            {/* Course Image Header if available */}
+            {activeCourseModal.image && (
+              <div className="relative h-44 w-full overflow-hidden shrink-0 bg-[#131914]">
+                <img
+                  src={activeCourseModal.image}
+                  alt={activeCourseModal.title}
+                  className="w-full h-full object-cover opacity-70"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-6 right-6 text-white space-y-1">
+                  <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-[#D6E3CE] text-[#131914]">
+                    {activeCourseModal.badge || activeCourseModal.eyebrow}
+                  </span>
+                  <h3 className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-white">
+                    {activeCourseModal.title}
+                  </h3>
+                </div>
+              </div>
+            )}
 
-            <p className="text-xs sm:text-sm text-[#6B5B4E] leading-relaxed mb-4">
-              {activeCourseModal.description}
-            </p>
+            <div className="p-6 sm:p-8 space-y-5 flex-1">
+              {!activeCourseModal.image && (
+                <div>
+                  <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-[#F7F5F0] text-[#131914] font-bold border border-[#E8E5DD]">
+                    {activeCourseModal.eyebrow || activeCourseModal.badge}
+                  </span>
+                  <h3 className="font-sans text-2xl font-bold text-[#131914] mt-2">
+                    {activeCourseModal.title}
+                  </h3>
+                </div>
+              )}
 
-            <div className="p-3.5 rounded-lg bg-[#EFE6D2] border border-[#3B2E26]/10 text-xs text-[#1F362C] mb-6">
-              <strong>Curriculum Package:</strong> {activeCourseModal.lessons}
-            </div>
+              <p className="text-xs sm:text-sm text-[#131914] leading-relaxed">
+                {activeCourseModal.description}
+              </p>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[#3B2E26]/10">
-              <span className="font-serif text-xl font-bold text-[#1F362C]">
-                {activeCourseModal.price}
-              </span>
-              <button
-                onClick={() => {
-                  setActiveCourseModal(null);
-                  setIsSoulCallOpen(true);
-                }}
-                className="px-6 py-2.5 rounded-full bg-[#1F362C] text-[#F6F1E7] text-xs font-semibold uppercase tracking-wider hover:bg-[#162820]"
-              >
-                Enroll / Inquire
-              </button>
+              <div className="p-4 rounded-2xl bg-[#F7F5F0] border border-[#E8E5DD] text-xs text-[#131914] space-y-1">
+                <div className="font-bold font-mono uppercase text-[10px] text-[#656C64]">
+                  Curriculum Package & Access:
+                </div>
+                <div className="flex items-center gap-2 pt-0.5">
+                  <BookOpen className="w-4 h-4 text-[#131914] shrink-0" />
+                  <span>{activeCourseModal.lessons}</span>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-4 border-t border-[#E8E5DD]">
+                <div>
+                  <div className="font-sans text-2xl font-bold text-[#131914]">
+                    {activeCourseModal.price}
+                  </div>
+                  <div className="text-[10px] font-mono text-[#656C64]">
+                    Direct Student Enrollment
+                  </div>
+                </div>
+                <button
+                  onClick={() => {
+                    setActiveCourseModal(null);
+                    setIsSoulCallOpen(true);
+                  }}
+                  className="px-6 py-3 rounded-full bg-[#131914] hover:bg-[#253026] text-white text-xs font-medium uppercase tracking-wider transition-colors shadow-xs"
+                >
+                  Enroll / Inquire
+                </button>
+              </div>
+
+              <div className="flex items-center justify-center gap-3 text-[11px] text-[#656C64] pt-1">
+                <span className="flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Encrypted Stripe Checkout</span>
+                </span>
+                <span>•</span>
+                <span>Instant Digital Access</span>
+              </div>
             </div>
           </div>
         </div>
